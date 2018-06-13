@@ -5,7 +5,7 @@ var app = express();
 app.set('view engine','hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
-
+const port = process.env.PORT || 3000;
 app.use((req,res,next) => {
   var now = new Date().toString();
   var log=`${now}: ${req.method} ${req.url}`;
@@ -45,4 +45,4 @@ app.get('/bad',(req,res) => {
     "errorMessage":"Unable to Connect!"
   });
 });
-app.listen(3000);
+app.listen(port);
